@@ -27,6 +27,8 @@ body {
 }
 
 .main-text__btn {
+    border: none;
+    outline: none;
     display: inline-block;
     text-decoration: none;
     border: none;
@@ -50,6 +52,7 @@ body {
 }
 
 .main-text__btnS {
+    outline: none;
     display: inline-block;
     border: none;
     text-decoration: none;
@@ -77,6 +80,7 @@ body {
     flex-direction: row;
     justify-content: center;
     margin-top: 10px;
+    border: none;
 }
 
 .main-text__phr {
