@@ -20,7 +20,7 @@ function postPhrases() {
     xhr.send(phrases);
 
     xhr.onload = () => console.log(xhr.response);
-    input.value = ""
+    input.value = "";
 }
 
 inputBtn.onclick = postPhrases;
