@@ -89,19 +89,35 @@ body {
     margin-top: 20px;
     font-weight: 700;
     width: 365px;
-    height: 50px;
+}
+
+.halfmain-back {
+    margin-bottom: 150px;
+    outline: none;
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color: bisque;
+    font-weight: 500;
+    color: white;
+    transition: all 0.3s;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #ED4264 0%, #FFEDBC 51%, #ED4264 100%);
 }
 
 .showPhr {
     margin-top: 15px;
+    padding: 5px;
 }
 
 .footer {
+    position: absolute;
+    bottom: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     margin-bottom: 5px;
 }

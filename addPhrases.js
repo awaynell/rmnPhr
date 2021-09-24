@@ -1,7 +1,8 @@
 let input = document.querySelector(".main-text__input");
 let inputBtn = document.querySelector(".main-text__btn");
 let inputBtnShow = document.querySelector(".main-text__btnS");
-// let inputBtnDel = document.querySelector(".main-text__btnD");
+let footer = document.querySelector(".footer")
+    // let inputBtnDel = document.querySelector(".main-text__btnD");
 let div = document.querySelector(".showPhr")
 let value = input.value;
 let url = 'https://test-api.javascript.ru/v1/waynell/users'
@@ -44,6 +45,7 @@ function showPhrases() {
                 div.innerHTML += `${data[i].fullName} <br>`;
             }
             inputBtnShow.setAttribute('disabled', true);
+            footer.style.marginBottom = -div.clientHeight / 1.40 + "px";
         });
 };
 
@@ -59,16 +61,33 @@ function deletePhrs() {
 }
 
 
-function deletePhr(id) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("DELETE", `https://test-api.javascript.ru/v1/waynell/users/${id}`)
-        // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhr.send();
+// function deletePhr(id) {
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("DELETE", `https://test-api.javascript.ru/v1/waynell/users/${id}`)
+//         // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//     xhr.send();
 
-    xhr.onload = () => console.log(xhr.response);
+//     xhr.onload = () => console.log(xhr.response);
+// }
+
+function deletePhr(a, b) {
+    fetch(url)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            data.splice(a, b);
+            console.log(JSON.stringify(data))
+        });
+    for (let i = 0; i < arr.length; i++) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("DELETE", `https://test-api.javascript.ru/v1/waynell/users/${arr[i]}`)
+            // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send();
+
+        xhr.onload = () => console.log(xhr.response);
+    }
 }
-
-
 
 
 document.addEventListener("click", customInput)
