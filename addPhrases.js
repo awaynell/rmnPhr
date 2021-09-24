@@ -70,14 +70,13 @@ function deletePhrs() {
 //     xhr.onload = () => console.log(xhr.response);
 // }
 
-function deletePhr(a, b) {
+function deletePhr(...arr) {
     fetch(url)
         .then(response => {
             return response.json();
         })
         .then(data => {
-            data.splice(a, b);
-            console.log(JSON.stringify(data))
+            console.log(data)
         });
     for (let i = 0; i < arr.length; i++) {
         let xhr = new XMLHttpRequest();
