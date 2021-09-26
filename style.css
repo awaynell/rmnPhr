@@ -1,3 +1,7 @@
+html {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Amatic SC', cursive;
     background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 0.4629202022605917) 0%, rgba(252, 200, 69, 0.5413515748096114) 100%);
@@ -62,7 +66,7 @@ body {
     height: 50px;
 }
 
-.footer {
+footer {
     display: flex;
     align-items: center;
     flex-direction: column;

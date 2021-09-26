@@ -1,7 +1,7 @@
 let input = document.querySelector(".main-text__input");
 let inputBtn = document.querySelector(".main-text__btn");
 let inputBtnShow = document.querySelector(".main-text__btnS");
-let footer = document.querySelector(".footer")
+let footer = document.querySelector("footer")
     // let inputBtnDel = document.querySelector(".main-text__btnD");
 let div = document.querySelector(".showPhr")
 let value = input.value;
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", 'https://test-api.javascript.ru/v1/waynell/users')
+        xhr.open("POST", url)
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.send(phrases);
 
@@ -38,7 +38,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     div.innerHTML += `${data[i].fullName} <br>`;
                 }
                 inputBtnShow.setAttribute('disabled', true);
-                footer.style.marginBottom = -div.clientHeight / 1.40 + "px";
+                if (div.clientHeight < 15) {
+                    footer.style.marginBottom = auto;
+                } else if (div.clientHeight < 350) {
+                    footer.style.marginBottom = -div.clientHeight + 215 + "px";
+                } else {
+                    footer.style.marginBottom = -div.clientHeight + 255 + "px";
+                }
             });
     };
 
@@ -59,35 +65,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// async function showPhrases() {
-//     let response = await fetch(url);
-//     let json = await response.json();
-//     for (let i = 0; i < json.length; i++) {
-//         div.innerHTML += `${json[i].fullName} <br>`;
-//     }
-//     inputBtnShow.setAttribute('disabled', true)
-// }
-
-
 
 function deletePhrs() {
     let xhr = new XMLHttpRequest();
-    xhr.open("DELETE", 'https://test-api.javascript.ru/v1/waynell/users')
+    xhr.open("DELETE", url)
         // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.send();
 
     xhr.onload = () => console.log(xhr.response);
 }
 
-
-// function deletePhr(id) {
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("DELETE", `https://test-api.javascript.ru/v1/waynell/users/${id}`)
-//         // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-//     xhr.send();
-
-//     xhr.onload = () => console.log(xhr.response);
-// }
 
 function deletePhr(...arr) {
     fetch(url)
@@ -99,7 +86,7 @@ function deletePhr(...arr) {
         });
     for (let i = 0; i < arr.length; i++) {
         let xhr = new XMLHttpRequest();
-        xhr.open("DELETE", `https://test-api.javascript.ru/v1/waynell/users/${arr[i]}`)
+        xhr.open("DELETE", `${url}/${arr[i]}`)
             // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.send();
 
