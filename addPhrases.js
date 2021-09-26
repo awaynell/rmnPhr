@@ -7,23 +7,57 @@ let div = document.querySelector(".showPhr")
 let value = input.value;
 let url = 'https://test-api.javascript.ru/v1/waynell/users'
 
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM загружен!");
 
-function postPhrases() {
-    let phrases = JSON.stringify({
-        fullName: input.value,
-        email: "phr@phr.ru"
-    });
+    function postPhrases() {
+        let phrases = JSON.stringify({
+            fullName: input.value,
+            email: "phr@phr.ru"
+        });
 
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", 'https://test-api.javascript.ru/v1/waynell/users')
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhr.send(phrases);
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", 'https://test-api.javascript.ru/v1/waynell/users')
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(phrases);
 
-    xhr.onload = () => console.log(xhr.response);
-    input.value = "";
-}
+        xhr.onload = () => console.log(xhr.response);
+        input.value = "";
+    }
 
-inputBtn.onclick = postPhrases;
+    inputBtn.onclick = postPhrases;
+
+    function showPhrases() {
+        return fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                for (let i = 0; i < data.length; i++) {
+                    div.innerHTML += `${data[i].fullName} <br>`;
+                }
+                inputBtnShow.setAttribute('disabled', true);
+                footer.style.marginBottom = -div.clientHeight / 1.40 + "px";
+            });
+    };
+
+    inputBtnShow.onclick = showPhrases;
+
+    document.addEventListener("click", customInput)
+
+    function customInput() {
+        input.classList.add("active")
+        if (document.activeElement != input) {
+            input.classList.remove("active")
+        };
+    }
+
+
+
+})
+
+
 
 // async function showPhrases() {
 //     let response = await fetch(url);
@@ -34,22 +68,7 @@ inputBtn.onclick = postPhrases;
 //     inputBtnShow.setAttribute('disabled', true)
 // }
 
-function showPhrases() {
-    return fetch(url)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-            for (let i = 0; i < data.length; i++) {
-                div.innerHTML += `${data[i].fullName} <br>`;
-            }
-            inputBtnShow.setAttribute('disabled', true);
-            footer.style.marginBottom = -div.clientHeight / 1.40 + "px";
-        });
-};
 
-inputBtnShow.onclick = showPhrases;
 
 function deletePhrs() {
     let xhr = new XMLHttpRequest();
@@ -86,14 +105,4 @@ function deletePhr(...arr) {
 
         xhr.onload = () => console.log(xhr.response);
     }
-}
-
-
-document.addEventListener("click", customInput)
-
-function customInput() {
-    input.classList.add("active")
-    if (document.activeElement != input) {
-        input.classList.remove("active")
-    };
 }

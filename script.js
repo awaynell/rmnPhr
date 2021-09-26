@@ -4,12 +4,17 @@ let url = "https://test-api.javascript.ru/v1/waynell/users";
 
 
 
-btn.onclick = () => showPhrases()
 
 
-async function showPhrases() {
-    let response = await fetch(url);
-    let json = await response.json();
-    let jsonCount = Math.trunc(Math.random() * json.length);
-    phr.innerHTML = json[jsonCount].fullName;
-}
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM загружен!")
+    async function showPhrases() {
+        let response = await fetch(url);
+        let json = await response.json();
+        let jsonCount = Math.trunc(Math.random() * json.length);
+        phr.innerHTML = json[jsonCount].fullName;
+    }
+
+    btn.onclick = () => showPhrases()
+})
