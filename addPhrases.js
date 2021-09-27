@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     div.innerHTML += `${data[i].fullName} <br>`;
                 }
                 inputBtnShow.setAttribute('disabled', true);
-                if (div.clientHeight < 15) {
-                    footer.style.marginBottom = auto;
-                } else if (div.clientHeight < 350) {
-                    footer.style.marginBottom = -div.clientHeight + 215 + "px";
-                } else {
-                    footer.style.marginBottom = -div.clientHeight + 255 + "px";
-                }
+                // if (div.clientHeight < 15) {
+                //     footer.style.marginBottom = auto;
+                // } else if (div.clientHeight < 350) {
+                //     footer.style.marginBottom = -div.clientHeight + 215 + "px";
+                // } else {
+                //     footer.style.marginBottom = -div.clientHeight + 255 + "px";
+                // }
             });
     };
 
