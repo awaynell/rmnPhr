@@ -23,6 +23,7 @@ body {
 }
 
 .halfmain {
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +101,7 @@ body {
 }
 
 .halfmain-back {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     outline: none;
     display: inline-block;
     border: none;
@@ -118,6 +119,16 @@ body {
 .showPhr {
     margin-top: 15px;
     padding: 5px;
+}
+
+.done {
+    color: white;
+    padding: 5px;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 0.7654412106639531) 0%, rgba(253, 29, 29, 0.7794468129048494) 50%, rgba(252, 176, 69, 0.7990546560421043) 100%);
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
 }
 
 footer {

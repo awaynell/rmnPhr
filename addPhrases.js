@@ -6,6 +6,7 @@ let footer = document.querySelector("footer")
 let div = document.querySelector(".showPhr")
 let value = input.value;
 let url = 'https://test-api.javascript.ru/v1/waynell/users'
+let halfmain = document.querySelector(".halfmain")
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM загружен!");
@@ -21,7 +22,20 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.send(phrases);
 
-        xhr.onload = () => console.log(xhr.response);
+        xhr.onload = () => {
+            console.log(xhr.response);
+            if (xhr.status === 200) {
+                halfmain.insertAdjacentHTML('afterbegin', '<div class = "done">Фраза добавлена</div>');
+                let done = document.querySelector(".done");
+                setTimeout(() => {
+                    done.style.opacity = "0";
+                    setTimeout(() => {
+                        done.remove()
+                    }, 300);
+                }, 1500);
+            }
+        }
+
         input.value = "";
     }
 
@@ -37,14 +51,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 for (let i = 0; i < data.length; i++) {
                     div.innerHTML += `${data[i].fullName} <br>`;
                 }
+
                 inputBtnShow.setAttribute('disabled', true);
-                // if (div.clientHeight < 15) {
-                //     footer.style.marginBottom = auto;
-                // } else if (div.clientHeight < 350) {
-                //     footer.style.marginBottom = -div.clientHeight + 215 + "px";
-                // } else {
-                //     footer.style.marginBottom = -div.clientHeight + 255 + "px";
-                // }
             });
     };
 
@@ -58,9 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
             input.classList.remove("active")
         };
     }
-
-
-
 })
 
 
@@ -69,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function deletePhrs() {
     let xhr = new XMLHttpRequest();
     xhr.open("DELETE", url)
-        // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.send();
 
     xhr.onload = () => console.log(xhr.response);
@@ -87,7 +91,6 @@ function deletePhr(...arr) {
     for (let i = 0; i < arr.length; i++) {
         let xhr = new XMLHttpRequest();
         xhr.open("DELETE", `${url}/${arr[i]}`)
-            // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.send();
 
         xhr.onload = () => console.log(xhr.response);
