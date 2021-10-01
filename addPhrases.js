@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((data) => {
+        document.querySelector(".loading").remove();
         console.log(data);
         for (let i = 0; i < data.length; i++) {
           div.innerHTML += `${data[i].fullName} <br>`;
