@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
   inputBtn.onclick = postPhrases;
 
   function showPhrases() {
+    let loading = document.createElement("div");
+    loading.classList.add("loading");
+    loading.innerHTML = "Загружаю фразы...";
+    halfmain.append(loading);
     return fetch(url)
       .then((response) => {
-        let loading = document.createElement("div");
-        loading.classList.add("loading");
-        loading.innerHTML = "Загружаю фразы...";
-        halfmain.append(loading);
         return response.json();
       })
       .then((data) => {
