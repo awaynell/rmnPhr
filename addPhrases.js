@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
   inputBtn.onclick = postPhrases;
 
   function showPhrases() {
+    if (document.querySelectorAll(".outer").length !== 0) {
+      document.querySelectorAll(".outer").forEach((item) => item.remove());
+    }
     let loading = document.createElement("div");
     loading.classList.add("loading");
     loading.innerHTML = "Загружаю фразы...";
@@ -53,11 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         document.querySelector(".loading").remove();
         console.log(data);
-        for (let i = 0; i < data.length; i++) {
-          div.innerHTML += `${data[i].fullName} <br>`;
+        if (data.length === 0) {
+          div.innerHTML += `<div class="outer">Записи отсутствуют</div>`;
         }
-
-        inputBtnShow.setAttribute("disabled", true);
+        for (let i = 0; i < data.length; i++) {
+          div.innerHTML += `<div class="outer">${data[i].fullName}</div>`;
+        }
       });
   }
 
