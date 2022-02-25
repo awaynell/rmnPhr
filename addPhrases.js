@@ -72,3 +72,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+function deletePhrs() {
+  let xhr = new XMLHttpRequest();
+  xhr.open("DELETE", url);
+  xhr.send();
+
+  xhr.onload = () => console.log(xhr.response);
+}
+
+function deletePhr(...arr) {
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
+  for (let i = 0; i < arr.length; i++) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("DELETE", `${url}/${arr[i]}`);
+    xhr.send();
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        halfmain.insertAdjacentHTML("afterbegin", '<div class = "done">Фраза удалена</div>');
+        let done = document.querySelector(".done");
+        setTimeout(() => {
+          done.style.opacity = "0";
+          setTimeout(() => {
+            done.remove();
+          }, 300);
+        }, 1500);
+      }
+    };
+  }
+}
