@@ -1,6 +1,6 @@
 let phr = document.querySelector(".main-text__phr");
 let btn = document.querySelector(".main-text__btn");
-let url = "https://test-api.javascript.ru/v1/waynell/users";
+let url = "https://test-api.javascript.ru/v1/awaynell/users";
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM загружен!");

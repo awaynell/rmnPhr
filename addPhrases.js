@@ -5,7 +5,7 @@ let footer = document.querySelector("footer");
 // let inputBtnDel = document.querySelector(".main-text__btnD");
 let div = document.querySelector(".showPhr");
 let value = input.value;
-let url = "https://test-api.javascript.ru/v1/waynell/users";
+let url = "https://test-api.javascript.ru/v1/awaynell/users";
 let halfmain = document.querySelector(".halfmain");
 
 document.addEventListener("DOMContentLoaded", function () {
