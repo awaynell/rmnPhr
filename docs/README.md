@@ -13,5 +13,5 @@
 </p>
 
 <p align="center">
-<img alt='Превью' src="https://github.com/awaynell/cra-ts-chat/blob/master/docs/rmnPhr2.png">
+<img alt='Превью' src="https://github.com/awaynell/rmnPhr/blob/master/docs/rmnPhr2.png">
 </p>
